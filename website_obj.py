@@ -23,9 +23,13 @@ class WebsiteObject():
         """ 1. iterate through lst_website_elements, a list of website elements
             2. clear current procedure
             3. for each website element in the list"""
-        
+        for i in lst_website_elements:
+            self._procedure = []
+            self._procedure.append(i)
+
     def append_command(self, website_element):
         """adds a website element to current procedure"""
+        self._procedure.append(website_element)
         
     def to_json_dict(self):
         """turns procedure into a dicionary that can be converted to json"""
@@ -45,18 +49,22 @@ class WebsiteObject():
     
 
     def setweburl(self, weburl):
+        self._weburl = weburl
           
     def setwebname(self, webname):
-        
+        self._webname = webname
     
     def getwebname(self):
+        return self._webname
         
     def getweburl(self):
-        
+        return self._weburl
+
     def getprocedure(self):
+        return self._procedure
         
     def setprocedure(self, procedure):
-        
+        self._procedure = procedure
     @property
     def track_variables(self):
         return self._track_variables
