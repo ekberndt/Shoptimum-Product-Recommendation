@@ -9,27 +9,39 @@ class local_database():
         
         # file path of text file
         """CODE HERE"""
+        self._file_path = file_path
         # mode to open text file in (a, w, r, r+)
         """CODE HERE""" 
+        self._handler = handler
         # reference to text file
         """CODE HERE"""
+        self._file = open(self._file_path, self._handler)
         # turns next file into list a strings line by line
         """CODE HERE"""
-        # creates dictionary of website objects from _text
+        self._saves = []
+        for line in self._file:
+            self._saves.append(line)
+        self._file.close()
+        # creates dictionary of website objects from _file
         """CODE HERE"""
+        self._websites = {}
+
         #self.assertion()
         
     def get_file(self):
         #self.assertion()
         return self.saves
-    def get_text(self):
-        
+    def get_file(self):
         return self._text
     
     "loads website objs into dictionary"
     def collect_websites(self):
         """Turns text from text file or json into a dictionary.
         self._websites is then set to equal that dictionary"""
+        #CODE HERE
+        while self._saves:
+            new_website = json_text_func.convert_to_obj(website_obj(), self._saves)
+            self._websites[new_website.getwebname()] = new_website
         
     """write my current dictionary of all website objs to a JSON file"""  
     def write_to_json(self, json_file):
@@ -62,10 +74,9 @@ class local_database():
             x = json.load(f)
             d = {}
             for i in x:
-                temp_website_holder = convert_dict_to_obj(i, website_dataobj())
+                temp_website_holder = json_text_func.convert_dict_to_obj(i, json_text_func.website_dataobj())
                 d[temp_website_holder.getwebname().name] = temp_website_holder
             self.set_website_objs(d)
-            
         
             
     def close(self):
@@ -78,9 +89,6 @@ class local_database():
         of website objects
         self.saves -- the text file"""
         self.saves = open(os.path.dirname(__file__) + r"/test_saves.txt", 'r+')
-        
-        
-        
         
         for i in self.get_website_objs():
             self.saves.write('#\n')
@@ -96,30 +104,38 @@ class local_database():
                     self.saves.write(y.write_self()+'\n')
         self.saves.close()
         self.saves = None
-        self._text = None
+        self._file = None
         self._websites = None
+        
     def open(self):
         """opens the text file associated with
         the local database."""
         self.assertion()
+        
     def assertion(self):
         """Asserts that all my necessary variables have been instantiated or not null"""
         if self.saves is None or []:
-            """CODE HERE"""
-        if self._text == None or []:
-            """CODE HERE"""
+            #CODE HERE
+            for line in self._file:
+                self._saves.append(line)
+        if self._file == None or []:
+            #CODE HERE
+            self._file = open(self._file_path, self._handler)
         if self.get_website_objs() is None or []:
-            """CODE HERE"""
+            #CODE HERE
+            self.collect_websites()
+            
     
     def get_website_objs(self):
         """returns the dictionary instance, self._websites"""
-        
-        """CODE HERE"""
+        #CODE HERE
+        return self._websites
         
     def set_website_objs(self, websites):
         """Sets the dictionary, self._websites to the dictionary
          WEBSITES"""
-        """CODE HERE"""
+        #CODE HERE
+        self._websites = websites
         
     @property
     def saves(self): 

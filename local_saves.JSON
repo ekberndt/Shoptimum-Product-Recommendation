@@ -1,0 +1,32 @@
+[
+{
+    "webname=": "Walmart",
+    "web_url=": "https://www.walmart.com/ip/Refurbished-Apple-iPad-Pro-12-9-4th-Gen-128GB-Silver-Wi-Fi-MY2J2LL-A-Latest-Model/242925018 web_url url\n",
+    "addcart=": "//*[@id=\"add-on-atc-container\"]/div[1]/section/div[1]/div[3]/button/span addcart xpath_button\n",
+    "checkout=": "//*[@id=\"cart-root-container-content-skip\"]/div[1]/div/div[2]/div/div/div/div/div[3]/div/div/div[2]/div/div[2]/div/button[1] checkout xpath_button\n",
+    "continueWithoutAcc": "/html/body/div[1]/div/div[1]/div/div[1]/div[3]/div/div/div/div[1]/div/div/div/div/div[3]/div/div[1]/div/section/section/div/button continueWithoutAcc xpath_button\n",
+    "continuebutton": "/html/body/div[1]/div/div[1]/div/div[1]/div[3]/div/div/div/div[2]/div/div[2]/div/div/div/div[3]/div/div/div[2]/button continuebutton xpath_button\n",
+    "Pringle'ssend_key=": "//*[@id=\"firstName\"] Pringle's xpath_sendkey false\n",
+    "Cansend_key=": "//*[@id=\"lastName\"] Can xpath_sendkey false\n",
+    "18004235678send_key=": "//*[@id=\"phone\"] 18004235678 xpath_sendkey false\n",
+    "1515 Berkeley Avesend_key=": "//*[@id=\"addressLineOne\"] 1515 Berkeley Ave xpath_sendkey false\n",
+    "pringlescan@gmail.comsend_key=": "//*[@id=\"email\"] pringlescan@gmail.com xpath_sendkey false\n",
+    "Pringles Valleysend_key=": "//*[@id=\"city\"] Pringles Valley xpath_sendkey true\n",
+    "17362send_key=": "//*[@id=\"postalCode\"] 17362 xpath_sendkey true\n",
+    "CA": "//*[@id=\"state\"] CA xpath_select_value\n",
+    "continue1": "/html/body/div[1]/div/div[1]/div/div[1]/div[3]/div/div/div/div[3]/div[1]/div[2]/div/div/div/div[3]/div/div/div/div/div/form/div[2]/div[2]/button continue1 xpath_button\n"
+},
+{
+    "webname=": "Amazon",
+    "web_url=": "https://www.amazon.com/Doctor-Butlers-Hemorrhoid-Fissure-Ointment/dp/B009G6U1AS/ref=sr_1_3_sspa?crid=3R46DVUMNYDJH&keywords=hemmoroid+treatment&qid=1641591074&sprefix=hemmo%2Caps%2C128&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyVk5VRDhRSE00T0dEJmVuY3J5cHRlZElkPUEwOTg5MDA4MjMwTk1ROUlYU0tMVCZlbmNyeXB0ZWRBZElkPUEwNzUyMDUyMzdPOFA4SzM2SzBSNyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU= web_url url\n",
+    "accordion": "//div[@id=\"newAccordionRow\"] accordion xpath_button\n",
+    "addcart=": "//*[@id=\"buy-now-button\"] addcart xpath_button\n",
+    "fake@email.comsend_key=": "//*[@id=\"ap_email\"] fake@email.com xpath_sendkey false\n",
+    "continue": "//*[@id=\"continue\"] continue xpath_button\n",
+    "password_heresend_key=": "//*[@id=\"ap_password\"] password_here xpath_sendkey false\n",
+    "signin": "//*[@id=\"signInSubmit\"] signin xpath_button\n",
+    "wait": "30 wait timer\n",
+    "cancel": "//*[@id=\"signup_cancel\"] cancel xpath_button\n",
+    "shipping": "//*[@id=\"spc-orders\"]/div[1]/div/div[3]/div/div/div[2]/div[2]/div[1]/fieldset/div[2]/input shipping xpath_button\n"
+}
+]
