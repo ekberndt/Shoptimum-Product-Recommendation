@@ -29,7 +29,7 @@ def convert_to_obj(new_website, obj_txt):
                 holder = obj_txt[x][(obj_txt[x].find('=')+1):len(obj_txt[x])].split()
                 holder = " ".join(holder)
                 obj_txt.pop(0)
-                packer = delement(holder, holder, "webname")
+                packer = website_element(holder, holder, "webname")
                 
                 new_website.setwebname(packer)
                 #after the equal, will increment by one to read actual text information
