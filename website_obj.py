@@ -25,10 +25,11 @@ class WebsiteObject():
             3. for each website element in the list"""
         for i in lst_website_elements:
             self._procedure = []
-             
+            self._procedure.append(i)
 
     def append_command(self, website_element):
         """adds a website element to current procedure"""
+        self._procedure.append(website_element)
         
     def to_json_dict(self):
         """turns procedure into a dicionary that can be converted to json"""

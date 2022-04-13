@@ -1,5 +1,8 @@
 import local_database
-def converttoobj(new_website, obj_txt):
+import website_obj
+import website_element
+
+def convert_to_obj(new_website, obj_txt):
     """Takes a new website object and some portion of text in an array and parses through
     it to add to the new website object.
     
@@ -26,7 +29,7 @@ def converttoobj(new_website, obj_txt):
                 holder = obj_txt[x][(obj_txt[x].find('=')+1):len(obj_txt[x])].split()
                 holder = " ".join(holder)
                 obj_txt.pop(0)
-                packer = website_element(holder, holder, "webname")
+                packer = delement(holder, holder, "webname")
                 
                 new_website.setwebname(packer)
                 #after the equal, will increment by one to read actual text information
@@ -176,7 +179,7 @@ def convertalltoobj(obj_txt):
     websites = {}
     while len(copy_obj_txt) > 0 and len(copy_obj_txt[0].split()) > 0:
         print("convert all loop")
-        new_website = website_dataobj()
+        new_website = website_obj()
         new_website = converttoobj(new_website, copy_obj_txt)
         websites[new_website.getwebname().name] = new_website 
         print("done with loop")
