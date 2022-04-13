@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+body {
+  margin: auto;
+  font-family: 'Rubik';
+  background: #1e2124;
+  font-size: 18px;
+  height: 100vp;
+  max-width: 120rem;
+  padding: 2rem;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  height: 100vh;
+  max-width: 200vh;
+  grid-template-rows: 0.2fr 1fr;
+}
+
+.header {
+  // TODO: Attributes for header
+
+  // TODO: What content is needed in the header
+}
+
+.products {
+  // TODO .products attributes
+
+  .individual-product {
+    background-color: rgb(4, 15, 12);
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+    column-gap: 10px;
+    
+    // TODO: Add product attributes 
+  }
+}
