@@ -29,7 +29,7 @@ def convert_to_obj(new_website, obj_txt):
                 holder = obj_txt[x][(obj_txt[x].find('=')+1):len(obj_txt[x])].split()
                 holder = " ".join(holder)
                 obj_txt.pop(0)
-                packer = delement(holder, holder, "webname")
+                packer = website_element(holder, holder, "webname")
                 
                 new_website.setwebname(packer)
                 #after the equal, will increment by one to read actual text information
@@ -172,18 +172,20 @@ def convert_dict_to_obj(dict, new_website):
 def convertalltoobj(obj_txt):
     """obj_txt is list of strings taken from gui for new website
     
-    obj_txt -- a list of lines of text from a text file"""
+    obj_txt -- a list of lines of text from a text file
+    websiteobj_dict -- a dictionary of website objects 
+                       created from obj_txt"""
     copy_obj_txt = obj_txt[:]
     print('copy ', copy_obj_txt)
     print('og ', obj_txt)
-    websites = {}
+    websiteobj_dict = {}
     while len(copy_obj_txt) > 0 and len(copy_obj_txt[0].split()) > 0:
         print("convert all loop")
         new_website = website_obj()
         new_website = converttoobj(new_website, copy_obj_txt)
-        websites[new_website.getwebname().name] = new_website 
+        websiteobj_dict[new_website.getwebname().name] = new_website 
         print("done with loop")
     print("done")
     print('copyf ', copy_obj_txt)
     print('ogf ', obj_txt) 
-    return websites
+    return websiteobj_dict
