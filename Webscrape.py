@@ -6,7 +6,11 @@ import os
 def webscrape(search_query):
     all_products = []
     Amazon_thread = Websites.Amazon.find_products(search_query)
+    Etsy_thread = Websites.Etsy.find_products(search_query)
+    Ebay_thread = Websites.Ebay.find_products(search_query)
     all_products.extend(Amazon_thread)
+    all_products.extend(Etsy_thread)
+    all_products.extend(Ebay_thread)
     all_products = rank(all_products)
     print_ranked_Products_to_JSON(all_products)
 
