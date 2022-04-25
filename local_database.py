@@ -3,6 +3,7 @@ import website_obj
 import website_element
 import json
 import os
+
 class local_database():
     """an object that is used in buy codethat holds all the website objects we need"""
     def __init__(self, file_path = "", handler = ""):
@@ -50,7 +51,7 @@ class local_database():
             print('[', file = f)
         for i in [self.get_website_objs().get(i) for i in self.get_website_objs()]:
             with open(json_file, 'a') as f:
-                
+
                 json.dump(i.to_json_dict(), f, indent = 4)
                 print(",\n", end = '', file = f)
         with open(json_file, 'a') as f:
@@ -59,7 +60,7 @@ class local_database():
             #f.tell tells where the cursor is currently at
             f.seek(f.tell() - 3, os.SEEK_SET)
             f.truncate()
-            print('\n]', file = f)
+            print('}\n]', file = f)
             
     
     def json_to_obj(self, json_file):
