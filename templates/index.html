@@ -10,15 +10,17 @@
         <div class="header">
           <div class="logo">
               <img href='/static/img/Shoptimum_Logo.png' alt="logo">
-            <h1>Shoptimum</h1>
+            <h1>SHOPTIMUM</h1>
           </div>
-          <div class="tool-bar">
-            <button type="button">Add Website!</button>
-             <div class="search">
-              <input type="text" name="search-box" id="search-box" placeholder="Product to find">
-              <button id="search-button">Search...</button>
-            </div>
+          <div class="add-website">
+            <button type="button">Add website!</button>
           </div>
+          <div class="search">
+            <input type="text" name="search-box" id="search-box" placeholder="Product to find">
+            <button id="search-button">Search...</button>
+          </div>
+        <div class="products" id="products">
+
           <div class="legend">
             <div class="product-image-header">
               <p>Image</p>
@@ -33,17 +35,16 @@
               <p>Review</p>
             </div>
             <div class="num-of-reviews-header">
-              <p>Number of Ratings</p>
+              <p>#Ratings</p>
             </div>
             <div class="link-to-product-header">
               <p>Link</p>
             </div>
           </div>
-        </div>
-        <div class="products" id="products">
+
           <div class="individual-product">
             <div class="product-image">
-              <img src="/static/img/Shoptimum_Logo.png" alt="Product image" class="product-img" width=100fr height=100fr>
+              <img src="/static/img/Shoptimum_Logo.png" alt="Product image" class="product-img">
             </div>
             <div class="product-name">
               <p>Avocado</p>
@@ -58,7 +59,7 @@
               <p>4072</p>
             </div>
             <div class="product-link">
-              <button type="button" onClick="window.open('https://codeology.club');">Product Link</button>
+              <button type="button" class = "product-link-button"onClick="window.open('https://codeology.club');">Product Link</button>
             </div>
           </div> 
           </div>
