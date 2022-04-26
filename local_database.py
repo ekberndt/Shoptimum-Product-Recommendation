@@ -60,7 +60,7 @@ class local_database():
             #f.tell tells where the cursor is currently at
             f.seek(f.tell() - 3, os.SEEK_SET)
             f.truncate()
-            print('}\n]', file = f)
+            print('\n]', file = f)
             
     
     def json_to_obj(self, json_file):

@@ -12,15 +12,15 @@
               <img href='/static/img/Shoptimum_Logo.png' alt="logo">
             <h1>SHOPTIMUM</h1>
           </div>
-          <div class="add-website">
+          <div class="tool-bar">
             <button type="button">Add website!</button>
-          </div>
-          <div class="search">
-            <input type="text" name="search-box" id="search-box" placeholder="Product to find">
-            <button id="search-button">Search...</button>
+             <div class="search">
+              <input type="text" name="search-box" id="search-box" placeholder="Product to find">
+              <button id="search-button">Search...</button>
+            </div>
           </div>
         <div class="products" id="products">
-
+ 
           <div class="legend">
             <div class="product-image-header">
               <p>Image</p>
@@ -41,7 +41,7 @@
               <p>Link</p>
             </div>
           </div>
-
+ 
           <div class="individual-product">
             <div class="product-image">
               <img src="/static/img/Shoptimum_Logo.png" alt="Product image" class="product-img">
@@ -50,7 +50,7 @@
               <p>Avocado</p>
             </div>  
             <div class="product-price">
-              <p>2</p> 
+              <p>2</p>
             </div>
             <div class="product-ratings">
               <p>4.9 out of 5 stars</p>
@@ -59,9 +59,9 @@
               <p>4072</p>
             </div>
             <div class="product-link">
-              <button type="button" class = "product-link-button"onClick="window.open('https://codeology.club');">Product Link</button>
+              <button type="button" class = "product-link-button" onClick="window.open('https://codeology.club');">Product Link</button>
             </div>
-          </div> 
+          </div>
           </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
       let products = document.getElementById("products");
       let searchButton = document.getElementById("search-button");
       let searchBox = document.getElementById("search-box");
-      
+     
       // Listener for button click
       searchButton.addEventListener("click", function() {
         searchQuery = searchBox.value;
@@ -78,13 +78,34 @@
           search: searchQuery
         }
         products.innerHTML = "Loading Products... This may take a while"
-
+ 
         $.post("http://127.0.0.1:5000/webscrape", JSON.stringify(message), function(response){
           if (typeof response == "string") {
             response = JSON.parse(response);
           }
-          
-          products.innerHTML = ""
+         
+          products.innerHTML = `
+            <div class="legend">
+              <div class="product-image-header">
+                <p>Image</p>
+              </div>
+              <div class="product-name-header">
+                <p>Name</p>
+              </div>
+              <div class="price-header">
+                <p>Price</p>
+              </div>
+              <div class="rating-header">
+                <p>Review</p>
+              </div>
+              <div class="num-of-reviews-header">
+                <p>#Ratings</p>
+              </div>
+              <div class="link-to-product-header">
+                <p>Link</p>
+              </div>
+            </div>
+          `;
           for (let i = 0; i < response.length; i++) {
             let product = response[i];
             let productDiv = document.createElement("div");
@@ -97,7 +118,7 @@
               <p>${product["Name"]}</p>
             </div>  
             <div class="product-price">
-              <p>${product["Price"]}</p> 
+              <p>${product["Price"]}</p>
             </div>
             <div class="product-ratings">
               <p>${product["avg Review"]}</p>
@@ -106,7 +127,7 @@
               <p>${product["num of Reviews"]}</p>
             </div>
             <div class="product-link">
-              <button type="button" onClick="window.open('${product["Location of Product"]}');">Product Link</button>
+              <button type="button" class = "product-link-button" onClick="window.open('${product["Location of Product"]}');">Product Link</button>
             </div>
             `;
             products.appendChild(productDiv);
@@ -116,3 +137,4 @@
     </script>
   </body>
 </html>
+ 

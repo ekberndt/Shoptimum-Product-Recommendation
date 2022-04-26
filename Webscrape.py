@@ -33,7 +33,7 @@ def print_ranked_Products_to_JSON(all_products):
         
         f.truncate()
         # To close bracket on json file
-        print("\n]", file=f)
+        print("}\n]", file=f)
 
 def rank(all_products):
     # TODO: add ranking algorithm here
