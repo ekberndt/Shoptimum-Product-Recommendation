@@ -1,6 +1,8 @@
 from importlib.resources import Package
 import Product
 import Websites.Amazon
+import Websites.Etsy
+import Websites.Ebay
 import os
 
 def webscrape(search_query):
