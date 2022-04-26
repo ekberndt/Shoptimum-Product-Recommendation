@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+body {
+  margin: auto;
+  font-family: 'Rubik';
+  background: #1e2124;
+  font-size: 18px;
+  height: 100vp;
+  max-width: 120rem;
+  padding: 2rem;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  height: 100vh;
+  max-width: 200vh;
+  -ms-grid-rows: 0.2fr 1fr;
+      grid-template-rows: 0.2fr 1fr;
+}
+
+.header {
+  margin: auto;
+  color: pink;
+  font-family: 'Rubik';
+}
+
+.header .logo {
+  size: 100px;
+  background-color: 'white';
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.2fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+      grid-template-columns: 0.2fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+}
+
+.header .tool-bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.2fr 1fr;
+      grid-template-columns: 0.2fr 1fr;
+}
+
+.header .legend {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+      grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+}
+
+.products {
+  background: #282b30;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 10px;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.products .individual-product {
+  background-color: #81d4e8;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+      grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+}
+
+.products .individual-product .product-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.products .individual-product .product-name {
+  font-size: 30px;
+  color: red;
+}
+
+.products .individual-product .product-price {
+  font-size: 30px;
+  color: darkorange;
+}
+
+.products .individual-product .product-ratings {
+  font-size: 30px;
+  color: #fff700;
+}
+
+.products .individual-product .product-num-ratings {
+  font-size: 30px;
+  color: #15ff00;
+}
+
+.products .individual-product .product-link {
+  font-size: 30px;
+  color: #00b7ff;
+}
+/*# sourceMappingURL=index.css.map */

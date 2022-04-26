@@ -20,20 +20,66 @@ body {
 }
 
 .header {
-  // TODO: Attributes for header
+  margin: auto;
+  color: pink;
+  font-family: 'Rubik';
+  .logo {
+    size: 100px;
+    background-color:'white';
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
 
-  // TODO: What content is needed in the header
+  }
+
+  .tool-bar {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
+  }
 }
 
 .products {
-  // TODO .products attributes
+  background: #282b30;
+  display: grid;
+  row-gap: 10px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
 
   .individual-product {
-    background-color: rgb(4, 15, 12);
+    background-color: rgb(129, 212, 232);
     display: grid;
     grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
     column-gap: 10px;
     
     // TODO: Add product attributes 
+    .product-image {
+      display: flex;
+      
+      
+    }
+    .product-name {
+      font-size: 30px;
+      color: rgb(255, 0, 0);
+    }
+    .product-price {
+      font-size: 30px;
+      color: rgb(255, 140, 0);
+    }
+    .product-ratings {
+      font-size: 30px;
+      color: rgb(255, 247, 0);
+    }
+    .product-num-ratings {
+      font-size: 30px;
+      color: rgb(21, 255, 0);
+    }
+    .product-link {
+      font-size: 30px;
+      color: rgb(0, 183, 255);
+    }
   }
 }
