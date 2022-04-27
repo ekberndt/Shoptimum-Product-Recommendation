@@ -1,6 +1,6 @@
 import local_database
 import website_obj
-import website_element
+from website_element import WebsiteElement as website_element
 
 def convert_to_obj(new_website, obj_txt):
     """Takes a new website object and some portion of text in an array and parses through
@@ -181,8 +181,8 @@ def convertalltoobj(obj_txt):
     websiteobj_dict = {}
     while len(copy_obj_txt) > 0 and len(copy_obj_txt[0].split()) > 0:
         print("convert all loop")
-        new_website = website_obj()
-        new_website = converttoobj(new_website, copy_obj_txt)
+        new_website = website_obj.WebsiteObject()
+        new_website = convert_to_obj(new_website, copy_obj_txt)
         websiteobj_dict[new_website.getwebname().name] = new_website 
         print("done with loop")
     print("done")

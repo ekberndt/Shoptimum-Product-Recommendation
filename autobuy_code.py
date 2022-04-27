@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import random
 import local_database as database_scalp
@@ -22,7 +25,7 @@ class websitedriver():
         self.path = os.path.dirname(__file__) +"/chromedriver.exe"
         
         # A Selemium webdriver object created from self.path
-        self._driver = webdriver.Chrome(executable_path= self.path)
+        self._driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         
         # A website object associated with the website driver
         self._website_obj = website_obj
@@ -30,16 +33,16 @@ class websitedriver():
         self.driver.implicitly_wait(time)
     @property
     def website_obj(self):
-        """YOUR CODE HERE"""
+        return self._website_obj
     @website_obj.setter
     def website_obj(self, website_obj):
-        """YOUR CODE HERE"""
+        self._website_obj = website_obj
     @property
     def driver(self):
-        """YOUR CODE HERE"""
+        return self._driver
     @driver.setter
     def driver(self, driver):
-        """YOUR CODE HERE"""
+        self._driver = driver
         
         
 def buy(websitedriver, website_obj_procedure):
@@ -75,7 +78,7 @@ def buy(websitedriver, website_obj_procedure):
     for i in website_obj_procedure:
         if i.type == 'xpath_button':
             try:
-                """YOUR CODE HERE"""
+                websitedriver.driver.findElement(By.XPATH(i.element)).click()
                 time.sleep(random.uniform(1.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work from ' + i.element)
@@ -83,27 +86,28 @@ def buy(websitedriver, website_obj_procedure):
         elif i.type == 'url':
             print('url ran')
             try:
-                """YOUR CODE HERE"""
+                websitedriver.driver.get(i.element)
                 time.sleep(random.uniform(3.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work')
                 pass
         elif i.type == 'xpath_sendkey':
             try:
-                """YOUR CODE HERE"""
+                text_box = websitedriver.driver.findElement(By.XPATH(i.element))
                 if i.need_clear:
-                    """YOUR CODE HERE"""
+                    text_box.clear()
                     time.sleep(random.uniform(1.0, 13.5))
                 
                     
-                """YOUR CODE HERE"""
+                text_box.send_keys(i.name)
                 time.sleep(random.uniform(1.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work')
                 pass
         elif i.type == 'xpath_select_value':
             try:
-                """YOUR CODE HERE"""
+                sel = Select(websitedriver.driver.find_element_by_xpath(i.element))
+                sel.select_by_value(i.name)
                 time.sleep(random.uniform(1.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work')

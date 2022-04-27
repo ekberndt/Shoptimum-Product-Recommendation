@@ -1,0 +1,122 @@
+<!doctype html>
+    <html>
+    <head>
+    <title>Shoptimum Search Page</title>
+    <link rel="stylesheet" type="text/css" href="searchWindow.css">
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <script type='text/javascript'>
+        
+        var value = 0 // The value we use when adding increments of xpath commands
+
+        
+        // Adds am text input child node for additional xpath or Shoptimum commands
+        function add_field(){
+            window.value++;
+            let textChild = document.createTextNode("xpath " + window.value.toString() + ": ");
+            textChild.className = "textChild";
+            let divChild = document.createElement("span");
+            divChild.appendChild(textChild);
+            divChild.className = "textChild";
+            add_website_form.appendChild(divChild);
+            var input = document.createElement("input");
+            input.type = "text";
+
+            input.className = "xpath";
+            input.name = "xpath" + window.value.toString();
+            add_website_form.appendChild(input);
+            //Append a line break 
+            add_website_form.appendChild(document.createElement("br"));
+        }
+
+        /**
+        * Submits HTML Form to flask
+        */
+        function submitForm(){
+            
+            var data = document.getElementById("add_website_form");
+            data_json = getFormJSON(data);
+            insertData(data_json);
+            
+
+            
+        }
+
+        /** sends success msg for debugging purposes. */
+        function success(msg) {
+            var send = document.getElementById("header1");
+            // jk it is json //when pushing json, only receive txt vers of json need to turn into actual dictionary with parse
+            send.appendChild(document.createTextNode(msg['msg']));
+            send.appendChild(document.createElement("br"));
+        }
+
+        /** Sends data to flask app. */
+        const insertData = (newData) => {
+            fetch("http://localhost:5000/add_website_JSON", { 
+                method: "POST",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(newData)
+            })
+            .then(resp => resp.json())
+            .then((data) => {
+                success(data); // display response json from flask to webpage
+                console.log(data)
+            })
+            .catch(error => console.log(error))
+        }
+        /**
+        * Creates a json object including fields in the form
+        * Turns HTML form object into  JSON object
+        * @param {HTMLElement} form The form element to convert
+        * @return {Object} The form data
+        */
+        const getFormJSON = (form) => {
+            const data = new FormData(form);
+            return Array.from(data.keys()).reduce((result, key) => {
+              if (result[key]) {
+                result[key] = data.getAll(key)
+                return result
+              }
+              result[key] = data.get(key);
+              return result;
+            }, {});
+          };
+        
+    </script>
+    
+    
+    </head>
+    <body>
+        <button id="back" type="button" className='front', onClick="location.href='index.html'">Back</button>
+        <div><img src="images/holo.png" class='img-src'/></div>
+        <h1 id='header1'  class='section'></h1>
+        <form name= "add_website_form" id= "add_website_form" action = "http://localhost:5000/add_website" method = "POST">
+            <p id="enter">Add Website:</p>
+            
+            <p><input type = "submit" value = "submit" href="searchWindow.html", id="submit_og"/></p>
+            
+            
+            <button type="button" id="submitprime" className="front" onClick="submitForm()">
+                submit++
+              </button>
+            <div id="cont"/> 
+            <p id="webname_title"> webname: <input type = "text" name = "webname" id='webname' /></p>
+            <p id="weburl_title"> web url: <input type = "text" name = "web_url" id='web_url'/></p>
+            <button type="button" id="add_xpath" className="front" onClick="add_field()">
+                Add Xpath
+              </button>
+              <br/>
+              <div id="container"/>
+              <br/>
+            
+            
+            
+            
+         </form> 
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
+    </html>
