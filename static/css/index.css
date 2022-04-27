@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap");
 body {
   margin: auto;
   font-family: 'Rubik';
@@ -60,14 +62,23 @@ body {
   height: 50px;
   width: 500px;
   margin-right: 20px;
+  border-radius: 10px;
+  padding-left: 15px;
+  background: #CDF2C8;
+  border: none;
 }
 
 .header .tool-bar button {
   font-family: 'Rubik';
+  color: white;
   height: 50px;
-  width: 100px;
-  background: white;
+  width: 150px;
+  background: #63c069;
   border-color: #9ddfa1;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-weight: 400px;
 }
 
 .products {
@@ -85,13 +96,20 @@ body {
       grid-template-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
   -webkit-column-gap: 100px;
           column-gap: 100px;
-  -ms-flex-line-pack: end;
-      align-content: flex-end;
+  background-color: #afeba7;
+  height: 60px;
+  margin-top: 50px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 25px;
+  font-weight: 600;
+  color: #3b6536;
 }
 
 .products .individual-product {
-  background-color: #9ddfa1;
-  border-radius: 0%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
@@ -103,6 +121,7 @@ body {
           align-items: center;
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 10px;
 }
 
 .products .individual-product .product-image {
@@ -146,7 +165,7 @@ body {
 }
 
 .products .individual-product .product-link-button {
-  background-color: #c2fbd7;
+  background-color: #afeba7;
   border-radius: 100px;
   -webkit-box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
           box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
