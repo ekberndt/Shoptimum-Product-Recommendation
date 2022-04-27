@@ -16,6 +16,7 @@
               <input type="text" name="search-box" id="search-box" placeholder="Product to find">
               <button id="search-button">Search...</button>
             </div>
+            <button type="button" id="implement-button">Implement</button>
             <button type="button">Add website!</button>
           </div>
         <div class="products" id="products">
@@ -69,7 +70,8 @@
       let products = document.getElementById("products");
       let searchButton = document.getElementById("search-button");
       let searchBox = document.getElementById("search-box");
-     
+      
+      
       // Listener for button click
       searchButton.addEventListener("click", function() {
         searchQuery = searchBox.value;
@@ -140,6 +142,17 @@
         send.appendChild(document.createTextNode(msg['msg']));
         send.appendChild(document.createElement("br"));
     }
+
+    let implementButton = document.getElementById("implement-button");
+    // Implement Button
+    implementButton.addEventListener("click", function() {
+        let message = {
+          button: "button clicked"
+        }
+        products.innerHTML = "Loading Products... This may take a while"
+ 
+        $.post("http://127.0.0.1:5000/implement", JSON.stringify(message));
+      });
 
     /** Sends data to flask app. */
     const insertData = (newData) => {
