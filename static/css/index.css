@@ -27,7 +27,7 @@ body {
 }
 
 .header .logo {
-  size: 100px;
+  size: 20px;
   background-color: 'white';
   display: -ms-grid;
   display: grid;
@@ -35,11 +35,39 @@ body {
       grid-template-columns: 0.2fr 1fr 0.2fr 0.4fr 0.2fr 0.2fr;
 }
 
+.header .logo img {
+  height: 50px;
+  width: auto;
+}
+
 .header .tool-bar {
+  margin-top: 50px;
   display: -ms-grid;
   display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-grid-columns: 0.2fr 1fr;
       grid-template-columns: 0.2fr 1fr;
+  font-family: 'Rubik';
+}
+
+.header .tool-bar #search-box {
+  font-family: 'Rubik';
+  height: 50px;
+  width: 500px;
+  margin-right: 20px;
+}
+
+.header .tool-bar button {
+  font-family: 'Rubik';
+  height: 50px;
+  width: 100px;
+  background: white;
+  border-color: #9ddfa1;
 }
 
 .products {
