@@ -4,10 +4,10 @@ class WebsiteObject():
   
     def __init__(self, webname = '', weburl = ''):
         self._track_variables = ['web_url', 'addcart', 'gocart', 'webname', 'checkout']
-        self._weburl = WebsiteElement(weburl, "web_url", "url")
+        
         # added in below
         #self.append_command(self._weburl)
-        self._track_variables.append(self.getweburl().name)
+       
         self._webname = WebsiteElement("webname", webname, "name")
         # added in below
         # self.append_command(self._webname)
@@ -19,7 +19,7 @@ class WebsiteObject():
         self._gocart = WebsiteElement("", "gocart", "xpath")
         self._track_variables.append(self.getgocart().name)
         self._procedure = []
-        self.append_command(self.getweburl())
+        
 
 
 

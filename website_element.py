@@ -1,4 +1,5 @@
 class WebsiteElement():
+    """A command for website object"""
     def __init__(self, element = '', name = '', type = '', need_clear = False):
         self._element = element
         self._name = name
@@ -30,6 +31,6 @@ class WebsiteElement():
     def need_clear(self, bool):
         self._need_clear = bool
     def need_clear_to_str(self):
-        return 'true' if self.need_clear == True else 'false'
+        return 'true' if self.need_clear else 'false'
     def write_self(self):
         return ' '.join([self.element, self.name, self.type])
