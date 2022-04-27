@@ -127,13 +127,54 @@
               <p>${product["num of Reviews"]}</p>
             </div>
             <div class="product-link">
-              <button type="button" class = "product-link-button" onClick="window.open('${product["Location of Product"]}');">Product Link</button>
+              <button type="button" class = "product-link-button" onClick="insertData('${product["Location of Product"]}');">Product Link</button>
             </div>
             `;
             products.appendChild(productDiv);
           }
         });
       });
+       /** sends success msg for debugging purposes. */
+       function success(msg) {
+        var send = document.getElementById("header1");
+        // jk it is json //when pushing json, only receive txt vers of json need to turn into actual dictionary with parse
+        send.appendChild(document.createTextNode(msg['msg']));
+        send.appendChild(document.createElement("br"));
+    }
+
+    /** Sends data to flask app. */
+    const insertData = (newData) => {
+        fetch("http://localhost:5000/addProduct", { 
+            method: "POST",
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(newData)
+        })
+        .then(resp => resp.json())
+        .then((data) => {
+            success(data); // display response json from flask to webpage
+            console.log(data)
+        })
+        .catch(error => console.log(error))
+    }
+    /**
+    * Creates a json object including fields in the form
+    * Turns HTML form object into  JSON object
+    * @param {HTMLElement} form The form element to convert
+    * @return {Object} The form data
+    */
+    const getFormJSON = (form) => {
+        const data = new FormData(form);
+        return Array.from(data.keys()).reduce((result, key) => {
+          if (result[key]) {
+            result[key] = data.getAll(key)
+            return result
+          }
+          result[key] = data.get(key);
+          return result;
+        }, {});
+      };
     </script>
   </body>
 </html>

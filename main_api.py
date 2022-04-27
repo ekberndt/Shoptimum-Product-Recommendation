@@ -8,6 +8,8 @@ import os
 import sys
 import autobuy_code as scalpbot_code
 import local_database as database_scalp
+from website_element import WebsiteElement as website_element
+from website_obj import WebsiteObject as website_dataobj
 load_dotenv()
 # Set up the app
 app = Flask(__name__, static_folder='../client/build/',    static_url_path='/')
@@ -149,11 +151,31 @@ def addProduct():
             f.seek(f.tell() - 3, os.SEEK_SET)
             f.truncate()
             print('\n]', file = f)
+            
+@app.route('/getProduct', methods=["GET"])
+def getProduct():
+        if request.method == 'GET':
+            f = open(os.path.dirname(__file__) + r"/container.json")
+            link = json.loads(f.read())
+            #d = [i for i in link.keys()]
+            d = []
+            for i in link:
+                d.extend([y for y in i.keys()])
+            return jsonify(d)
+@app.route('/getWebObj', methods=["GET"])
+def getWebObj():
+    if request.method == "GET":
+        main = database_scalp.local_database(os.path.dirname(__file__) + r"/local_saves.txt", "r+")
+        d = {}
+        
+        d = main.get_website_objs()
+        d = [i for i in d.keys()]
+        return jsonify(d)
 @app.route("/add_website", methods=["POST"])
 def add_website():
     if request.method == "POST":
         main = database_scalp.local_database(os.path.dirname(__file__) + r"/local_saves.txt", "r+")
-        new_website = database_scalp.website_dataobj()
+        new_website = database_scalp.WebsiteObject()
         new_website.setwebname(database_scalp.website_element(request.form.get("webname").split()[0], request.form.get("webname").split()[0], "webname"))        
         new_website.setweburl(database_scalp.website_element(request.form.get("web_url").split()[0], "web_url", "url") ) 
         new_website.append_command(new_website.getweburl())
