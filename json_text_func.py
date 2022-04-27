@@ -82,7 +82,8 @@ def convert_to_obj(new_website, obj_txt):
             
             else:
                 holder = obj_txt[x].split()
-                obj_txt.pop(0)
+                print(obj_txt.pop(0))
+                print(holder)
                 packer = website_element(holder[0], holder[1], holder[2])
                 new_website.append_command(packer)
                 """procedure_step += 1"""

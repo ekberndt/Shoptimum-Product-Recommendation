@@ -23,7 +23,12 @@ class local_database():
         elif ".json" in file_path:
             self._isJSON = True;
             self.collect_websites()
+        else:
             
+            # turns next file into list a strings line by line
+            self._text = self.saves.readlines()
+            # creates dictionary of website objects from _text
+            self.collect_websites()
         
     def get_file(self):
         #self.assertion()
@@ -103,7 +108,7 @@ class local_database():
         if self._text == None or []:
             self._text = self.saves.readlines() if not self._isJSON else None
         if self.get_website_objs() is None or []:
-            self.collect_websites() if not self._isJSON else self.json_to_obj(self._file_path)
+            self.collect_websites() 
     def get_website_objs(self):
         
         return self._websites

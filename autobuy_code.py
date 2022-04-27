@@ -22,7 +22,7 @@ class websitedriver():
     
     def __init__(self, website_obj):
         # A path location to the chromium webdriver
-        self.path = os.path.dirname(__file__) +"/chromedriver.exe"
+        #self.path = os.path.dirname(__file__) +"/chromedriver.exe"
         
         # A Selemium webdriver object created from self.path
         self._driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -30,7 +30,7 @@ class websitedriver():
         # A website object associated with the website driver
         self._website_obj = website_obj
     def wait(self, time):
-        self.driver.implicitly_wait(time)
+        self.Driver.implicitly_wait(time)
     @property
     def website_obj(self):
         return self._website_obj
@@ -38,10 +38,10 @@ class websitedriver():
     def website_obj(self, website_obj):
         self._website_obj = website_obj
     @property
-    def driver(self):
+    def Driver(self):
         return self._driver
-    @driver.setter
-    def driver(self, driver):
+    @Driver.setter
+    def Driver(self, driver):
         self._driver = driver
         
         
@@ -78,7 +78,8 @@ def buy(websitedriver, website_obj_procedure):
     for i in website_obj_procedure:
         if i.type == 'xpath_button':
             try:
-                websitedriver.driver.findElement(By.XPATH(i.element)).click()
+                button = websitedriver.Driver.find_element_by_xpath(i.element)
+                button.click()
                 time.sleep(random.uniform(1.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work from ' + i.element)
@@ -86,14 +87,14 @@ def buy(websitedriver, website_obj_procedure):
         elif i.type == 'url':
             print('url ran')
             try:
-                websitedriver.driver.get(i.element)
+                websitedriver.Driver.get(i.element)
                 time.sleep(random.uniform(3.0, 13.5))
             except:
                 raise Exception(i.type + ' ' + i.name +' did not work')
                 pass
         elif i.type == 'xpath_sendkey':
             try:
-                text_box = websitedriver.driver.findElement(By.XPATH(i.element))
+                text_box = websitedriver.Driver.find_element_by_xpath(i.element)
                 if i.need_clear:
                     text_box.clear()
                     time.sleep(random.uniform(1.0, 13.5))
@@ -106,7 +107,7 @@ def buy(websitedriver, website_obj_procedure):
                 pass
         elif i.type == 'xpath_select_value':
             try:
-                sel = Select(websitedriver.driver.find_element_by_xpath(i.element))
+                sel = Select(websitedriver.Driver.find_element_by_xpath(i.element))
                 sel.select_by_value(i.name)
                 time.sleep(random.uniform(1.0, 13.5))
             except:
@@ -126,4 +127,4 @@ def show_driver(websitedriver, bool):
     """Function to fullscreen the selenium driver 
     on the users screen."""
     if bool:
-        websitedriver.driver.maximize_window()
+        websitedriver.Driver.maximize_window()
