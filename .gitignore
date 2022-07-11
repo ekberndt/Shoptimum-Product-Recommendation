@@ -2,5 +2,5 @@
 *.json
 *.DS_Store
 *.txt
-
+._electron/node_modules/
 __pycache__/

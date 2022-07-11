@@ -1,4 +1,5 @@
-<!doctype html>
+
+    <!doctype html>
     <html>
     <head>
     <title>Shoptimum Search Page</title>
@@ -7,10 +8,28 @@
     <meta name="keywords" content="html tutorial template">
     <script type='text/javascript'>
         
-        var value = 0 // The value we use when adding increments of xpath commands
-
-        
-        // Adds am text input child node for additional xpath or Shoptimum commands
+        var value = 0
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("member").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0; i<number; i++) {
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("Member " + (i+1)));
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "member" + i;
+                container.appendChild(input);
+                // Append a line break 
+                container.appendChild(document.createElement("br"));
+            }
+        }
         function add_field(){
             window.value++;
             let textChild = document.createTextNode("xpath " + window.value.toString() + ": ");
@@ -28,45 +47,26 @@
             //Append a line break 
             add_website_form.appendChild(document.createElement("br"));
         }
-        function add_field_product(data){
-            let product_val = 0;
-        
-            let select_product = document.getElementById("productselect");
-            for (let i = 0; i < data.length; i++) {
-                var option = document.createElement("option");
-                option.value = data[i];
-                option.text = data[i];
-                option.name = "option" + i.toString();
-                select_product.appendChild(option);
-            }
-            //Append a line break 
-            add_website_form.appendChild(document.createElement("br"));
-        }
-
-        /**
-        * Submits HTML Form to flask
-        */
-        function submitForm(){
-            
+        function submither(){
+            //document.add_website_form.submit();
+            //window.location.href = "searchWindow.html";
             var data = document.getElementById("add_website_form");
             data_json = getFormJSON(data);
             insertData(data_json);
             
 
-            
+            //$.post("http://localhost:5000/add_website", function(data , status){
+            //alert(status);
+            //});
         }
-
-        /** sends success msg for debugging purposes. */
         function success(msg) {
             var send = document.getElementById("header1");
             // jk it is json //when pushing json, only receive txt vers of json need to turn into actual dictionary with parse
             send.appendChild(document.createTextNode(msg['msg']));
             send.appendChild(document.createElement("br"));
         }
-
-        /** Sends data to flask app. */
         const insertData = (newData) => {
-            fetch("http://localhost:5000/add_website", { 
+            fetch("http://localhost:5000/add_website_JSON", {
                 method: "POST",
                 headers: {
                     'Content-Type':'application/json'
@@ -80,27 +80,9 @@
             })
             .catch(error => console.log(error))
         }
-        /** Sends data to flask app. */
-        const getDataProduct = () => {
-            var data = document.getElementById("add_website_form");
-            var newData = [13]
-            fetch("http://localhost:5000/getProduct", { 
-                method: "GET",
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(newData)
-            })
-            .then(resp => resp.json())
-            .then((data) => {
-                console.log(data)
-                add_field_product(data);
-            })
-            .catch(error => console.log(error))
-        }
         /**
         * Creates a json object including fields in the form
-        * Turns HTML form object into  JSON object
+        *
         * @param {HTMLElement} form The form element to convert
         * @return {Object} The form data
         */
@@ -121,21 +103,16 @@
     
     </head>
     <body>
-        <button id="back" type="button" className='front', onClick="location.href='index.html'">Back</button>
-        <div><img src="Shoptimum_Logo.png" class='img-src'/></div>
-        <form name"implementor" id="implement_form" method="POST">
-            <select name="product" id="productselect">
-                <option selected value="base" onClick="getDataProduct()">Please Select a Product</option>
-            </select>
-        </form>
+        <button id="back" type="button" className='front', onClick="location.href='mainWindow.html'">Back</button>
+        <div><img src="images/holo.png" class='img-src'/></div>
         <h1 id='header1'  class='section'></h1>
         <form name= "add_website_form" id= "add_website_form" action = "http://localhost:5000/add_website" method = "POST">
             <p id="enter">Add Website:</p>
             
-            <p><input type = "submit" value = "submits" onClick="getDataProduct()" id="submit_og"/></p>
+            <p><input type = "submit" value = "submit" href="searchWindow.html", id="submit_og"/></p>
             
             
-            <button type="button" id="submitprime" className="front" onClick="submitForm()">
+            <button type="button" id="submitprime" className="front" onClick="submither()">
                 submit++
               </button>
             <div id="cont"/> 
@@ -154,6 +131,28 @@
          </form> 
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script> 
+        //$(document).ready(function() {
+        //    $("").click(function() {        
+        //        // Submit the form
+        //        console.log("click button worked");
+        //        $('#add_website_form').submit();
+        //        $.post("http://localhost:5000/add_website_JSON", $('#add_website_form').serializeJSON(), function(response) {
+        //            $("poop_return").text(respose);
+        //        });
+        //    });
+        //});
+        //$("").click(function() {
+        //    console.log("doomed");
+        //    $.post("http://localhost:5000/add_website_JSON", $('#add_website_form').serializeJSON(), function(response) {
+        //        $("poop_return").text(respose);
+        //    });
+        //
+        //    
+        //});
+
+        
+
+    </script>
 
     </html>

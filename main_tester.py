@@ -24,7 +24,7 @@ print(alp)"""
 
 print(main.get_text())
 print(main.get_website_objs())
-driver = scalpbot_code.websitedriver(main.get_website_objs()["Amazon1"])
+driver = scalpbot_code.websitedriver(main.get_website_objs()["Amazon2"])
 driver.wait(5)
 """print('********')
 print(main.get_website_objs()["Amazon"].getprocedure is main.get_website_objs()['Walmart'].getprocedure)

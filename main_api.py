@@ -216,9 +216,9 @@ def implement():
 def add_website():
     if request.method == "POST":
         main = database_scalp.local_database(os.path.dirname(__file__) + r"/local_saves.txt", "r+")
-        new_website = database_scalp.WebsiteObject()
-        new_website.setwebname(database_scalp.website_element(request.form.get("webname").split()[0], request.form.get("webname").split()[0], "webname"))        
-        new_website.setweburl(database_scalp.website_element(request.form.get("web_url").split()[0], "web_url", "url") ) 
+        new_website = website_dataobj()
+        new_website.setwebname(website_element(request.form.get("webname").split()[0], request.form.get("webname").split()[0], "webname"))        
+        new_website.setweburl(website_element(request.form.get("web_url").split()[0], "web_url", "url") ) 
         new_website.append_command(new_website.getweburl())
         
         i = 0
